@@ -64,6 +64,7 @@
   shows = "!sh -c 'git show \"stash@{$0}\" $@'"
   pops = "!sh -c 'git stash pop \"stash@{$0}\" $@'"
   cos = "!sh -c 'git checkout \"stash@{$0}\" $@'"
+	lu = shortlog -sne
 [help]
   autocorrect = 0
 [init]
