@@ -5,23 +5,24 @@
 local unmap = vim.keymap.del
 
 local map = function(modes, keymap, cmd, opts)
-  if opts == nil then
-    opts = {}
-  end
+	if opts == nil then
+		opts = {}
+	end
 
-  if opts.unique == nil then
-    opts.unique = true
-  end
+	if opts.unique == nil then
+		opts.unique = true
+	end
 
-  if opts.overwriteExisting == true then
-    unmap(modes, keymap)
-    opts.overwriteExisting = nil
-  end
+	if opts.overwriteExisting == true then
+		unmap(modes, keymap)
+		opts.overwriteExisting = nil
+	end
 
-  vim.keymap.set(modes, keymap, cmd, opts)
+	vim.keymap.set(modes, keymap, cmd, opts)
 end
 
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", { silent = true, desc = "Find Files" })
 map("n", "<Space>bd", "<cmd>bufdo bd!<cr>", { silent = false, desc = "Delete all buffers", overwriteExisting = true })
+map("n", "<Space><Esc>", "<cmd>nohl<cr>", { silent = false, desc = "No highlihgt" })
 
 unmap("i", "<Tab>")
