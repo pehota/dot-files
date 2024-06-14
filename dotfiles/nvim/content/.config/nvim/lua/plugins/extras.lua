@@ -9,4 +9,6 @@ return {
 	{ import = "lazyvim.plugins.extras.test.core" },
 
 	{ import = "lazyvim.plugins.extras.editor.navic" },
+
+	{ import = "lazyvim.plugins.extras.coding.mini-surround" },
 }

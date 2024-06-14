@@ -22,7 +22,19 @@ local map = function(modes, keymap, cmd, opts)
 end
 
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", { silent = true, desc = "Find Files" })
-map("n", "<Space>bd", "<cmd>bufdo bd!<cr>", { silent = false, desc = "Delete all buffers", overwriteExisting = true })
-map("n", "<Space><Esc>", "<cmd>nohl<cr>", { silent = false, desc = "No highlihgt" })
+map("n", "<leader>bd", "<cmd>bufdo bd!<cr>", { silent = false, desc = "Delete all buffers", overwriteExisting = true })
+map("n", "<leader><Esc>", "<cmd>nohl<cr>", { silent = false, desc = "No highlihgt" })
+map(
+	"n",
+	"<leader>xx",
+	"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+	{ silent = true, overwriteExisting = true, desc = "Buffer Diagnostics (Trouble)" }
+)
+map(
+	"n",
+	"<leader>xX",
+	"<cmd>Trouble diagnostics toggle<cr>",
+	{ silent = true, overwriteExisting = true, desc = "Diagnostics (Trouble)" }
+)
 
 unmap("i", "<Tab>")
