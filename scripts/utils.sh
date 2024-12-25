@@ -33,8 +33,8 @@ checkRuntime() {
 
 	BASH_VERSION_PARSED=$(echo "$BASH_VERSION" | grep -Eo '[0-9]+\.[0-9]+')
 
-	if [[ "${BASH_VERSION_PARSED:-0}" -le 3 ]]; then
-		echo "Bash version is too old. Please upgrade to v4 or higher."
+	if [[ "${BASH_VERSION_PARSED:-0}" -le 5 ]]; then
+		echo "Bash version is too old. Please upgrade to v5 or higher."
 		exit 1
 	fi
 }
@@ -50,9 +50,13 @@ installPackageManager() {
 bootstrap() {
 	installPackageManager
 
-	if (!(isPackageInstalled "stow")); then
-		installPackage "stow"
-	fi
+  if [[ ! -d ~/.config ]]; then
+    mkdir -p ~/.config
+  fi
+
+  if (!(isPackageInstalled "stow")); then
+    installPackage "stow"
+  fi
 }
 
 isPackageInstalled() {
