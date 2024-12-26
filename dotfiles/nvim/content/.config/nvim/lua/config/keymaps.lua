@@ -15,13 +15,14 @@ local map = function(modes, keymap, cmd, opts)
 
 	if opts.overwriteExisting == true then
 		unmap(modes, keymap)
-		opts.overwriteExisting = nil
 	end
+
+	opts.overwriteExisting = nil
 
 	vim.keymap.set(modes, keymap, cmd, opts)
 end
 
-map("n", "<C-p>", "<cmd>Telescope find_files<cr>", { silent = true, desc = "Find Files" })
+map("n", "<C-p>", "<cmd>FzfLua files<cr>", { silent = true, desc = "Find Files" })
 map("n", "<leader>bd", "<cmd>bufdo bd!<cr>", { silent = false, desc = "Delete all buffers", overwriteExisting = true })
 map("n", "<leader><Esc>", "<cmd>nohl<cr>", { silent = false, desc = "No highlihgt" })
 map(
@@ -37,4 +38,24 @@ map(
 	{ silent = true, overwriteExisting = true, desc = "Diagnostics (Trouble)" }
 )
 
-unmap("i", "<Tab>")
+-- mappings for diff mode
+if vim.api.nvim_get_option_value("diff", { win = 0 }) then
+	map(
+		"n",
+		"<leader>1",
+		"<cmd>diffget LOCAL_<tab><cr>",
+		{ overwriteExisting = true, silent = true, desc = "Get from left" }
+	)
+	map(
+		"n",
+		"<leader>2",
+		"<cmd>diffget REMOTE_<tab><cr>",
+		{ overwriteExisting = true, silent = true, desc = "Get from right" }
+	)
+	map(
+		"n",
+		"<leader>3",
+		"<cmd>diffget BASE_<tab><cr>",
+		{ overwriteExisting = true, silent = true, desc = "Get from base" }
+	)
+end

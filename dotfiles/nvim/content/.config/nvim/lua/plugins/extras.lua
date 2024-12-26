@@ -11,4 +11,6 @@ return {
 	{ import = "lazyvim.plugins.extras.editor.navic" },
 
 	{ import = "lazyvim.plugins.extras.coding.mini-surround" },
+
+	{ import = "lazyvim.plugins.extras.lang.elm" },
 }
