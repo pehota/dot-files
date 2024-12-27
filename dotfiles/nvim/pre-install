@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
 for folder in ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim ~/.cache/nvim; do
-	rm -rf "$folder.bak" 2>/dev/null
+  rm -rf "$folder.bak" 2>/dev/null
 
-	if [[ -e $folder ]]; then
-		mv $folder "$folder.bak"
-	fi
+  if [[ -e $folder ]]; then
+    mv $folder "$folder.bak"
+  fi
 done
 
 declare -A packages=(
-	["lazygit"]="lazygit"
-	["fd"]="fd"
-	["prettierd"]="prettierd"
+  ["lazygit"]="lazygit"
+  ["fd"]="fd"
+  ["luarocks"]="luarocks"
+  ["prettierd"]="prettierd"
 )
 
 installPackages packages
