@@ -66,7 +66,9 @@
                       "^co\\.zeit\\.hyperterm$",
                       "^co\\.zeit\\.hyper$",
                       "^io\\.alacritty$",
+                      "^org\\.alacritty$",
                       "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.mitchellh\\.ghostty$",
                       "^dev.zed.Zed$"
                     ],
                     "type": "frontmost_application_if"
@@ -102,21 +104,11 @@
       "fn_function_keys": [
         {
           "from": {
-            "key_code": "f3"
-          },
-          "to": [
-            {
-              "key_code": "mission_control"
-            }
-          ]
-        },
-        {
-          "from": {
             "key_code": "f4"
           },
           "to": [
             {
-              "key_code": "launchpad"
+              "apple_vendor_keyboard_key_code": "launchpad"
             }
           ]
         },
@@ -137,16 +129,6 @@
           "to": [
             {
               "key_code": "illumination_increment"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f9"
-          },
-          "to": [
-            {
-              "consumer_key_code": "fastforward"
             }
           ]
         }
@@ -171,16 +153,6 @@
           "to": [
             {
               "key_code": "left_command"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "non_us_backslash"
-          },
-          "to": [
-            {
-              "key_code": "escape"
             }
           ]
         },
@@ -213,6 +185,66 @@
     {
       "complex_modifications": {
         "rules": [
+          {
+            "description": "Map ctrl + [ to escape",
+            "enabled": false,
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Right Cmd | Remap to Ctrl in terminals",
+            "enabled": false,
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^org\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^dev.zed.Zed$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "right_command",
+                  "modifiers": {
+                    "optional": "any"
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
           {
             "conditions": [
               {
@@ -875,6 +907,16 @@
           }
         ]
       },
+      "devices": [
+        {
+          "identifiers": {
+            "is_keyboard": true,
+            "product_id": 34304,
+            "vendor_id": 1452
+          },
+          "ignore": true
+        }
+      ],
       "fn_function_keys": [
         {
           "from": {
@@ -897,11 +939,53 @@
           ]
         }
       ],
-      "name": "Numbers To Fn Keys",
-      "selected": false,
+      "name": "Broken touch bar (Numbers to Fn)",
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": {
+            "key_code": "left_command"
+          },
+          "to": [
+            {
+              "key_code": "left_option"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "left_option"
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "right_command"
+          },
+          "to": [
+            {
+              "key_code": "right_option"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "right_option"
+          },
+          "to": [
+            {
+              "key_code": "right_command"
+            }
+          ]
+        }
+      ],
       "virtual_hid_keyboard": {
         "country_code": 0,
-        "keyboard_type_v2": "jis"
+        "keyboard_type_v2": "ansi"
       }
     }
   ]
