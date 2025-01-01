@@ -134,7 +134,6 @@
         }
       ],
       "name": "Mac",
-      "selected": true,
       "simple_modifications": [
         {
           "from": {
@@ -187,7 +186,6 @@
         "rules": [
           {
             "description": "Map ctrl + [ to escape",
-            "enabled": false,
             "manipulators": [
               {
                 "from": {
@@ -212,7 +210,6 @@
           },
           {
             "description": "Right Cmd | Remap to Ctrl in terminals",
-            "enabled": false,
             "manipulators": [
               {
                 "conditions": [
@@ -225,6 +222,7 @@
                       "^io\\.alacritty$",
                       "^org\\.alacritty$",
                       "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.mitchellh\\.ghostty$",
                       "^dev.zed.Zed$"
                     ],
                     "type": "frontmost_application_if"
