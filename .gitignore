@@ -14,6 +14,7 @@ __pycache__
 !**/fish/functions/f.fish
 !**/fish/functions/e.fish
 !**/fish/functions/cvb.fish
+!**/fish/functions/bup.fish
 !**/fish/functions/ll.fish
 !**/fish/functions/weather.fish
 !**/fish/functions/__switch_node_version.fish
